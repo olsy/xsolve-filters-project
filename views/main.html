@@ -1,0 +1,33 @@
+<p ng-if="!pageData.length" class="message">Sorry, no data found with this options. Please, try with others
+	properties</p>
+
+<div class="table" ng-if="pageData.length">
+	<table>
+		<thead>
+		<tr>
+			<th ng-click="sort('Id')">id</th>
+			<th ng-click="sort('FirstName')">first name</th>
+			<th ng-click="sort('LastName')">last name</th>
+			<th ng-click="sort('Date')">data</th>
+			<th ng-click="sort('Company')">company</th>
+			<th ng-click="sort('Note')">note</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="person in pageData">
+			<td>{{person.id}}</td>
+			<td class="align-left">{{person.firstName}}</td>
+			<td class="align-left">{{person.lastName}}</td>
+			<!--<td>{{person.dateOfBirth | date:dateMask}}</td>-->
+			<td>{{person.dateOfBirth}}</td>
+			<td class="align-left">{{person.company}}</td>
+			<td>{{person.note}}</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+
+<nav ng-if="pages.length > 1">
+	<a ng-repeat="page in pages" ui-sref="main({page: page})" ng-class="{active: isActive(page)}">{{page}}</a>
+</nav>

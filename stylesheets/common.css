@@ -1,0 +1,297 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+body,
+input,
+select,
+body * {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box; }
+  body::after, body::before,
+  input::after,
+  input::before,
+  select::after,
+  select::before,
+  body *::after,
+  body *::before {
+    box-sizing: border-box; }
+
+h3 {
+  margin: 5px 0; }
+
+header,
+footer {
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+  background: #1f1f1f; }
+
+header {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; }
+  header h1 {
+    max-width: 300px;
+    margin: 0;
+    word-break: break-all;
+    color: white;
+    font-weight: 400; }
+  header .tags-wrapper {
+    width: calc(100% - 300px);
+    height: auto; }
+
+.content-wrapper {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between; }
+  .content-wrapper .filters-container {
+    width: 270px;
+    padding: 10px;
+    border-right: 2px solid #1f1f1f; }
+    .content-wrapper .filters-container .filter {
+      position: relative;
+      padding: 10px 20px 10px 0; }
+      .content-wrapper .filters-container .filter:not(:last-of-type) {
+        border-bottom: 1px solid #1f1f1f; }
+      .content-wrapper .filters-container .filter.search .help-title {
+        font-weight: 600;
+        cursor: pointer; }
+      .content-wrapper .filters-container .filter.search .options {
+        display: -webkit-flex;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; }
+        .content-wrapper .filters-container .filter.search .options .checkbox {
+          width: 50%; }
+      .content-wrapper .filters-container .filter.note .form-group,
+      .content-wrapper .filters-container .filter.note .condition {
+        display: inline-block;
+        width: 50%; }
+      .content-wrapper .filters-container .filter.note .form-group.note {
+        width: 100%; }
+      .content-wrapper .filters-container .filter.note .checkbox {
+        display: inline-block; }
+  .content-wrapper .table-wrapper {
+    width: calc(100% - 300px); }
+    .content-wrapper .table-wrapper .filter .form-group label {
+      left: 10px; }
+    .content-wrapper .table-wrapper .filter .form-group input {
+      padding-left: 10px; }
+    .content-wrapper .table-wrapper .table {
+      min-height: 300px; }
+      .content-wrapper .table-wrapper .table table {
+        margin: 8px auto 0;
+        border-collapse: collapse; }
+        .content-wrapper .table-wrapper .table table th, .content-wrapper .table-wrapper .table table td {
+          padding: 5px 10px; }
+        .content-wrapper .table-wrapper .table table tr:hover td {
+          background: rgba(31, 31, 31, 0.2); }
+        .content-wrapper .table-wrapper .table table thead th {
+          border-bottom: 2px solid grey;
+          text-transform: uppercase;
+          font-weight: 600;
+          cursor: pointer; }
+        .content-wrapper .table-wrapper .table table tbody td {
+          text-align: center; }
+          .content-wrapper .table-wrapper .table table tbody td.align-left {
+            text-align: left; }
+    .content-wrapper .table-wrapper .message {
+      text-align: center;
+      margin-top: 100px;
+      font: 600 13pt/1.2 Roboto; }
+    .content-wrapper .table-wrapper nav {
+      margin: 10px 0;
+      display: -webkit-flex;
+      display: flex;
+      justify-content: center; }
+      .content-wrapper .table-wrapper nav a {
+        width: 25px;
+        height: 25px;
+        box-sizing: border-box;
+        border-radius: 50%;
+        border: 2px solid #1f1f1f;
+        text-align: center;
+        text-decoration: none;
+        font: 600 13pt/1.2 Arial;
+        color: #1f1f1f; }
+        .content-wrapper .table-wrapper nav a:not(:last-of-type) {
+          margin-right: 10px; }
+        .content-wrapper .table-wrapper nav a.active {
+          background: #1f1f1f;
+          color: white; }
+
+footer {
+  height: 40px;
+  text-align: center; }
+  footer p {
+    margin: 0 auto;
+    font-size: 11pt;
+    color: white; }
+
+.tags-wrapper {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center; }
+  .tags-wrapper .tag {
+    padding: 5px 10px;
+    border: 2px solid dodgerblue;
+    border-radius: 12px;
+    text-transform: uppercase;
+    font: 600 12px/1.2 Arial;
+    color: dodgerblue;
+    cursor: pointer; }
+    .tags-wrapper .tag input[type=checkbox] {
+      position: absolute;
+      opacity: 0;
+      z-index: -1; }
+    .tags-wrapper .tag.active {
+      background: dodgerblue;
+      color: white; }
+    .tags-wrapper .tag:not(:last-of-type) {
+      margin-right: 10px; }
+
+.form-help {
+  margin-top: 1rem / 8;
+  margin-left: 1rem / 8;
+  color: #b3b3b3;
+  font-size: 0.8rem; }
+  .checkbox .form-help, .form-group .form-help {
+    position: absolute;
+    width: 100%; }
+  .checkbox .form-help {
+    position: relative;
+    margin-bottom: 5px; }
+
+.form-group {
+  position: relative;
+  margin: 20px 0 5px; }
+  .form-group input {
+    height: 1.9rem;
+    display: block;
+    background: none;
+    font-size: 1rem;
+    border: none;
+    line-height: 1.9;
+    width: 100%;
+    color: transparent;
+    transition: all 0.28s ease;
+    box-shadow: none; }
+    .form-group input:focus {
+      outline: none; }
+      .form-group input:focus ~ .control-label {
+        color: #337ab7; }
+      .form-group input:focus ~ .bar::before {
+        width: 100%;
+        left: 0; }
+  .form-group select {
+    width: 100%;
+    font-size: 1rem;
+    height: 1.6rem;
+    background: none;
+    border: none;
+    line-height: 1.6;
+    box-shadow: none; }
+  .form-group .control-label {
+    position: absolute;
+    top: 0.25rem;
+    pointer-events: none;
+    padding-left: 1rem / 8;
+    z-index: 1;
+    color: #b3b3b3;
+    font-size: 1rem;
+    font-weight: normal;
+    transition: all 0.28s ease; }
+  .form-group .bar {
+    position: relative;
+    border-bottom: 0.0625rem solid #999;
+    display: block; }
+    .form-group .bar::before {
+      content: '';
+      height: 0.125rem;
+      width: 0;
+      left: 50%;
+      bottom: -0.0625rem;
+      position: absolute;
+      background: #337ab7;
+      transition: left 0.28s ease, width 0.28s ease;
+      z-index: 2; }
+  .form-group select,
+  .form-group input:focus,
+  .form-group input.ng-not-empty {
+    color: #333; }
+    .form-group select ~ .control-label,
+    .form-group input:focus ~ .control-label,
+    .form-group input.ng-not-empty ~ .control-label {
+      font-size: 0.8rem;
+      color: gray;
+      top: -1rem;
+      left: 0; }
+
+.checkbox {
+  margin: 5px 0; }
+  .checkbox label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 25px;
+    text-align: left;
+    color: #333;
+    display: block; }
+    .checkbox label:hover .helper {
+      color: #337ab7; }
+  .checkbox input {
+    width: auto;
+    opacity: 0.00000001;
+    position: absolute;
+    left: 0; }
+    .checkbox input:checked ~ .helper {
+      color: #337ab7; }
+      .checkbox input:checked ~ .helper::after, .checkbox input:checked ~ .helper::before {
+        opacity: 1;
+        transition: height 0.28s ease; }
+      .checkbox input:checked ~ .helper::after {
+        height: 0.5rem; }
+      .checkbox input:checked ~ .helper::before {
+        height: 1.2rem;
+        transition-delay: 0.28s; }
+  .checkbox .helper {
+    color: #999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: 1rem;
+    z-index: 0;
+    border: 0.125rem solid currentColor;
+    border-radius: 0.0625rem;
+    transition: border-color 0.28s ease; }
+    .checkbox .helper::before, .checkbox .helper::after {
+      position: absolute;
+      height: 0;
+      width: 0.2rem;
+      background-color: #337ab7;
+      display: block;
+      transform-origin: left top;
+      border-radius: 0.25rem;
+      content: '';
+      transition: opacity 0.28s ease, height 0s linear 0.28s;
+      opacity: 0; }
+    .checkbox .helper::before {
+      top: 0.65rem;
+      left: 0.38rem;
+      transform: rotate(-135deg);
+      box-shadow: 0 0 0 0.0625rem white; }
+    .checkbox .helper::after {
+      top: 0.3rem;
+      left: 0;
+      transform: rotate(-45deg); }
+
+.checkbox + .checkbox {
+  margin-top: 5px; }
+
+.md-button.md-icon-button {
+  margin: 0; }
+
+.md-datepicker-input-container {
+  margin-left: 0; }
+
+/*# sourceMappingURL=common.css.map */
