@@ -218,52 +218,16 @@ function validateDate(data) {
 			/**
 			 * [day, month] = [month, day]
 			 */
-			tmp = checkZeroDate(date[0]);
-			date[0] = checkZeroDate(date[1]);
+			tmp = date[0];
+			date[0] = date[1];
 			date[1] = tmp;
 
-			// date filter doesn't work in Mozilla
-			item.dateOfBirth = dateString(date.join(".") + " " + datetime[1]);
-			// item.dateOfBirth = date.join(".") + " " + datetime[1];
+			item.dateOfBirth = new Date(date.join(".") + " " + datetime[1]);
 		}
 
 
 		return item;
 	});
-}
-
-/**
- * Add 0 before datetime if less than 10
- *
- * @param date
- * @returns {string}
- */
-function checkZeroDate(date) {
-	/**
-	 * example: month   6   ->  06
-	 *          day     12  ->  12
-	 */
-	return date.toString().length == 1 ? ("0" + date) : date;
-}
-
-/**
- * return date string
- *
- * @param d
- * @returns {String}
- */
-function dateString(d) {
-	var date = new Date(d),
-		year = date.getFullYear(),
-		month = checkZeroDate(date.getMonth() + 1),
-		day = checkZeroDate(date.getDate()),
-		hours = checkZeroDate(date.getHours()),
-		minutes = checkZeroDate(date.getMinutes()),
-		seconds = checkZeroDate(date.getSeconds()),
-		dateArr = [month, day, year],
-		timeArr = [hours, minutes];
-
-	return dateArr.join("/") + " " + timeArr.join(":");
 }
 
 /**
