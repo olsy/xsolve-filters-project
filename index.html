@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="./lib/angular-material/angular-material.min.css">
+	<link rel="stylesheet" href="./stylesheets/normalize.css">
+	<link rel="stylesheet" href="./stylesheets/common.css">
+
+	<title>XSolve | Data filtration</title>
+</head>
+<body>
+
+<div class="center" ng-controller="filtersController">
+	<header>
+		<h1>Data filtration</h1>
+
+		<!--companies tags-->
+		<div class="filter tags-wrapper">
+			<label ng-repeat="key in companiesList" class="tag" ng-class="{active: tags[key]}">
+				<input type="checkbox" id="{{key}}" ng-model="tags[key]">
+				{{key}}
+			</label>
+		</div>
+
+	</header>
+	<div class="content-wrapper">
+		<div class="filters-container">
+
+			<div class="filter search">
+				<div class="help-title" ng-click="menuSwitch()">Advanced search {{ menuToggle ? '&#9650;' : '&#9660;'}}</div>
+
+				<div class="search-options" ng-show="menuToggle">
+					<h3>search by:</h3>
+					<small>(only for search string)</small>
+					<div class="options">
+
+						<!--checkbox properties list-->
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" ng-model="search.id">
+								<i class="helper"></i>
+								id
+							</label>
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" ng-model="search.dateOfBirth">
+								<i class="helper"></i>
+								birthday
+							</label>
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" ng-model="search.firstName">
+								<i class="helper"></i>
+								first name
+							</label>
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" ng-model="search.lastName">
+								<i class="helper"></i>
+								last name
+							</label>
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" ng-model="search.company">
+								<i class="helper"></i>
+								company
+							</label>
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" ng-model="search.note">
+								<i class="helper"></i>
+								note
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="filter">
+
+				<!--date filter-->
+
+				<md-datepicker ng-model="date.from" md-max-date="date.to" md-placeholder="Enter date {{date.interval ? 'from' : ''}}"></md-datepicker>
+				<md-datepicker ng-if="date.interval" ng-model="date.to" md-min-date="date.from" md-placeholder="Enter date {{date.interval ? 'to' : ''}}"></md-datepicker>
+				<!--<input type="date" ng-model="date.from" max="date.to" placeholder="Enter date {{date.interval ? 'from' : ''}}">-->
+				<!--<input type="date" ng-model="date.to" min="date.from" placeholder="Enter date {{date.interval ? 'to' : ''}}">-->
+
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" ng-model="date.interval" ng-change="date.to = null">
+						<i class="helper"></i>
+						search at interval
+					</label>
+				</div>
+			</div>
+
+			<div class="filter note">
+
+				<!--note filter-->
+
+				<div class="form-group">
+					<input type="number" id="number" ng-model="note.number" min="0" ng-focus="focus = true" ng-blur="focus = false">
+					<label class="control-label" for="number">Note number</label>
+					<i class="bar"></i>
+				</div>
+
+				<div class="advanced-options" ng-show="focus || note.number || note.number == 0">
+					<div class="form-group condition">
+						<select ng-model="note.condition" id="condition" ng-options="item.id as item.value for item in conditionList"></select>
+						<label class="control-label" for="condition">Condition</label>
+						<i class="bar"></i>
+					</div>
+
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng-model="note.isEqual">
+							<i class="helper"></i>
+							Equal
+						</label>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="table-wrapper">
+
+			<!--search string-->
+			<div class="filter">
+				<div class="form-group">
+					<input type="text" id="query" ng-model="search.query">
+					<label class="control-label" for="query">Search</label>
+					<i class="bar"></i>
+				</div>
+			</div>
+
+			<ui-view></ui-view>
+		</div>
+	</div>
+
+
+	<footer>
+		<p>2016&copy; created by Oleksandr Sylko for XSolve</p>
+	</footer>
+</div>
+
+
+<script src="./lib/angular/angular.min.js"></script>
+<script src="./lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="javascript/app.js"></script>
+<script src="javascript/services/data.factory.js"></script>
+<script src="javascript/services/config.factory.js"></script>
+<script src="javascript/controllers/filters.ctrl.js"></script>
+<script src="javascript/controllers/table.ctrl.js"></script>
+<script src="javascript/filters/all.filters.js"></script>
+
+<script src="./lib/angular-animate/angular-animate.min.js"></script>
+<script src="./lib/angular-aria/angular-aria.min.js"></script>
+<script src="./lib/angular-material/angular-material.min.js"></script>
+</body>
+</html>
